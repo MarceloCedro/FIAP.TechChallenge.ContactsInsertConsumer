@@ -1,5 +1,5 @@
-﻿using FIAP.TechChallenge.ContactsInsertConsumer.Application.Applications;
-using FIAP.TechChallenge.ContactsInsertConsumer.ConsumerService.Events;
+﻿using ContactsInsertConsumer.Api.Events;
+using FIAP.TechChallenge.ContactsInsertConsumer.Application.Applications;
 using FIAP.TechChallenge.ContactsInsertConsumer.Domain.Interfaces.Applications;
 using FIAP.TechChallenge.ContactsInsertConsumer.Domain.Interfaces.Repositories;
 using FIAP.TechChallenge.ContactsInsertConsumer.Domain.Interfaces.Services;

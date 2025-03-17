@@ -46,7 +46,6 @@ builder.Services.AddMassTransit(x =>
         cfg.ReceiveEndpoint(queue, e =>
         {
             e.ConfigureConsumer<ContactInsertConsumer>(context);
-            //e.Consumer<ContactInsertConsumer>();
         });
 
         cfg.ConfigureEndpoints(context);
@@ -57,7 +56,6 @@ builder.Services.AddMassTransit(x =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

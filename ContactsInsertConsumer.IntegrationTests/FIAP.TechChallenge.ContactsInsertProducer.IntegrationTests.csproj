@@ -22,9 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ContactsInsertConsumer.Api\FIAP.TechChallenge.ContactsInsertConsumer.Api.csproj" />
     <ProjectReference Include="..\ContactsInsertConsumer.Application\FIAP.TechChallenge.ContactsInsertConsumer.Application.csproj" />
-    <ProjectReference Include="..\ContactsInsertConsumer.ConsumerService\FIAP.TechChallenge.ContactsInsertConsumer.ConsumerService.csproj" />
     <ProjectReference Include="..\ContactsInsertConsumer.Domain\FIAP.TechChallenge.ContactsInsertConsumer.Domain.csproj" />
+    <ProjectReference Include="..\ContactsInsertConsumer.Infrastructure\FIAP.TechChallenge.ContactsInsertConsumer.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
