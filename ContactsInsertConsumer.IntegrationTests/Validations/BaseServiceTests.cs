@@ -1,4 +1,4 @@
-﻿using FIAP.TechChallenge.ContactsInsertProducer.Infrastructure.Data;
+﻿using FIAP.TechChallenge.ContactsInsertConsumer.Infrastructure.Data;
 using FIAP.TechChallenge.ContactsInsertProducer.IntegrationTests.Config;
 
 namespace FIAP.TechChallenge.ContactsConsult.IntegrationTest.Validations

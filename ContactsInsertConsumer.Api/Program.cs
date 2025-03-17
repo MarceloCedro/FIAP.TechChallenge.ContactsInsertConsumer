@@ -1,11 +1,16 @@
-using ContactsInsertConsumer.ConsumerService;
-using FIAP.TechChallenge.ContactsInsertConsumer.ConsumerService.Events;
-using FIAP.TechChallenge.ContactsInsertConsumer.ConsumerService.IoC;
+using ContactsInsertConsumer.Api.Events;
+using ContactsInsertConsumer.Api.IoC;
 using MassTransit;
 using Prometheus;
-using static MassTransit.Monitoring.Performance.BuiltInCounters;
 
-var builder = Host.CreateApplicationBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 builder.Configuration.AddJsonFile($"appsettings.Dev.json", optional: true, reloadOnChange: true);
@@ -19,18 +24,17 @@ IConfiguration configuration = new ConfigurationBuilder().SetBasePath(Directory.
 
 builder.Services.AddDependencyResolver(builder.Configuration.GetConnectionString("DefaultConnection"));
 
-builder.Services.AddHostedService<Worker>();
+builder.Services.AddSingleton<IConfiguration>(configuration);
+
+builder.Services.AddHealthChecks().ForwardToPrometheus();
 
 var queue = configuration.GetSection("MassTransit:QueueName").Value ?? string.Empty;
 var server = configuration.GetSection("MassTransit:Server").Value ?? string.Empty;
 var user = configuration.GetSection("MassTransit:User").Value ?? string.Empty;
 var password = configuration.GetSection("MassTransit:Password").Value ?? string.Empty;
 
-builder.Services.AddHealthChecks().ForwardToPrometheus();
-
-
 builder.Services.AddMassTransit(x =>
-{  
+{
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(server, "/", h =>
@@ -44,13 +48,29 @@ builder.Services.AddMassTransit(x =>
             e.ConfigureConsumer<ContactInsertConsumer>(context);
             //e.Consumer<ContactInsertConsumer>();
         });
-       
+
         cfg.ConfigureEndpoints(context);
     });
 
     x.AddConsumer<ContactInsertConsumer>();
 });
-            
 
-var host = builder.Build();
-host.Run();
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHealthChecks("/health");
+app.UseHttpMetrics();
+app.MapMetrics();
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

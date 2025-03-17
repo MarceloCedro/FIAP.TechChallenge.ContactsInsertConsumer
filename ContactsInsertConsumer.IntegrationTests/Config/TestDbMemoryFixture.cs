@@ -1,4 +1,4 @@
-﻿using FIAP.TechChallenge.ContactsInsertProducer.Infrastructure.Data;
+﻿using FIAP.TechChallenge.ContactsInsertConsumer.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace FIAP.TechChallenge.ContactsInsertProducer.IntegrationTests.Config;

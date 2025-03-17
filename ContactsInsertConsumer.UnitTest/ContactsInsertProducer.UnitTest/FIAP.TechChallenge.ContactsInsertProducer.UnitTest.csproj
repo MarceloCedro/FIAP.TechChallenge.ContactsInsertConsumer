@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ContactsInsertProducer.Application\FIAP.TechChallenge.ContactsInsertProducer.Application.csproj" />
-    <ProjectReference Include="..\..\ContactsInsertProducer.Domain\FIAP.TechChallenge.ContactsInsertProducer.Domain.csproj" />
+    <ProjectReference Include="..\..\ContactsInsertConsumer.Application\FIAP.TechChallenge.ContactsInsertConsumer.Application.csproj" />
+    <ProjectReference Include="..\..\ContactsInsertConsumer.Domain\FIAP.TechChallenge.ContactsInsertConsumer.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

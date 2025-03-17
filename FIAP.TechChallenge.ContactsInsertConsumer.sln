@@ -21,7 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FIAP.TechChallenge.Contacts
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FIAP.TechChallenge.ContactsInsertConsumer.Application", "ContactsInsertConsumer.Application\FIAP.TechChallenge.ContactsInsertConsumer.Application.csproj", "{F68FE516-246A-4741-8B26-5B5887BF1357}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIAP.TechChallenge.ContactsInsertConsumer.ConsumerService", "ContactsInsertConsumer.ConsumerService\FIAP.TechChallenge.ContactsInsertConsumer.ConsumerService.csproj", "{935EED38-6ECA-406B-8445-BF1D698F6016}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FIAP.TechChallenge.ContactsInsertConsumer.ConsumerService", "ContactsInsertConsumer.ConsumerService\FIAP.TechChallenge.ContactsInsertConsumer.ConsumerService.csproj", "{935EED38-6ECA-406B-8445-BF1D698F6016}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FIAP.TechChallenge.ContactsInsertProducer.UnitTest", "ContactsInsertConsumer.UnitTest\ContactsInsertProducer.UnitTest\FIAP.TechChallenge.ContactsInsertProducer.UnitTest.csproj", "{96C45BBA-203C-4A83-AEB9-6BB4B7107902}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FIAP.TechChallenge.ContactsInsertProducer.IntegrationTests", "ContactsInsertConsumer.IntegrationTests\FIAP.TechChallenge.ContactsInsertProducer.IntegrationTests.csproj", "{5035610F-DA0D-4546-85F0-854341D7289E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsInsertConsumer.Api", "ContactsInsertConsumer.Api\ContactsInsertConsumer.Api.csproj", "{E0C1982B-C555-4702-BE55-1D93FB97F2DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{935EED38-6ECA-406B-8445-BF1D698F6016}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{935EED38-6ECA-406B-8445-BF1D698F6016}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{935EED38-6ECA-406B-8445-BF1D698F6016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96C45BBA-203C-4A83-AEB9-6BB4B7107902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96C45BBA-203C-4A83-AEB9-6BB4B7107902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96C45BBA-203C-4A83-AEB9-6BB4B7107902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96C45BBA-203C-4A83-AEB9-6BB4B7107902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5035610F-DA0D-4546-85F0-854341D7289E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5035610F-DA0D-4546-85F0-854341D7289E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5035610F-DA0D-4546-85F0-854341D7289E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5035610F-DA0D-4546-85F0-854341D7289E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0C1982B-C555-4702-BE55-1D93FB97F2DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0C1982B-C555-4702-BE55-1D93FB97F2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0C1982B-C555-4702-BE55-1D93FB97F2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0C1982B-C555-4702-BE55-1D93FB97F2DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +76,9 @@ Global
 		{73F760F3-125E-457D-9C92-830876ED13AB} = {8827B808-4E2B-48E9-8D11-7669F0E9B9F2}
 		{F68FE516-246A-4741-8B26-5B5887BF1357} = {8827B808-4E2B-48E9-8D11-7669F0E9B9F2}
 		{935EED38-6ECA-406B-8445-BF1D698F6016} = {CF375C3D-3AE7-4FCC-89EA-6591A3DE54C2}
+		{96C45BBA-203C-4A83-AEB9-6BB4B7107902} = {9743AC0E-6CAA-40DF-9A13-C0C7F45FDFA7}
+		{5035610F-DA0D-4546-85F0-854341D7289E} = {9743AC0E-6CAA-40DF-9A13-C0C7F45FDFA7}
+		{E0C1982B-C555-4702-BE55-1D93FB97F2DC} = {CF375C3D-3AE7-4FCC-89EA-6591A3DE54C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5361E11C-6C08-401C-8609-032183D9ADDF}

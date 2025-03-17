@@ -1,6 +1,7 @@
 using Bogus;
+using FIAP.TechChallenge.ContactsInsertConsumer.Domain.DTOs.EntityDTOs;
+using FIAP.TechChallenge.ContactsInsertConsumer.Domain.Entities;
 using FIAP.TechChallenge.ContactsInsertProducer.Domain.DTOs.EntityDTOs;
-using FIAP.TechChallenge.ContactsInsertProducer.Domain.Entities;
 using FIAP.TechChallenge.ContactsInsertProducer.IntegrationTests.Config.Helpers;
 
 namespace FIAP.TechChallenge.ContactsInsertProducer.IntegrationTests.Config;

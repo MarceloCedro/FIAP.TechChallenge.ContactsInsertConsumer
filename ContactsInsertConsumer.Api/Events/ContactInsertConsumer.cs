@@ -2,7 +2,7 @@
 using FIAP.TechChallenge.ContactsInsertProducer.Domain.DTOs.EntityDTOs;
 using MassTransit;
 
-namespace FIAP.TechChallenge.ContactsInsertConsumer.ConsumerService.Events
+namespace ContactsInsertConsumer.Api.Events
 {
     public class ContactInsertConsumer : IConsumer<ContactDto>
     {
