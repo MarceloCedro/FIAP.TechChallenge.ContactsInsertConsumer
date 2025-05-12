@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v5.0.0
         with:
           context: .
-          tags: 'maxcedro/contactsinsertconsumer:latest'
+          tags: 'maxcedro/contactsinsertconsumer:1.0'
           push: true
 
       - name: Restore dependencies
