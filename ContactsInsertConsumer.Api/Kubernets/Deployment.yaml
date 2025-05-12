@@ -19,7 +19,7 @@ spec:
         image: rmahlow/fiaptechchallengecontactsinsertconsumerapi:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 5898 
+        - containerPort: 5050 
         resources:
           limits:
             cpu: "0.5"
