@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contact-insert-consumer-api-deployment # Nome do Deployment
+  annotations:
+    autor: Rodrigo Mahlow 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: contact-insert-consumer-api
+  template:
+    metadata:
+      labels:
+        app: contact-insert-consumer-api
+    spec:
+      containers:
+      - name: contact-insert-consumer-api
+        image: rmahlow/fiaptechchallengecontactsinsertconsumerapi:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5898 
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: 512Mi
+          requests:
+            cpu: "0.2"
+            memory: 256Mi
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            secretKeyRef:
+              name: contact-insert-consumer-api-secrets
+              key: DefaultConnection
+        - name: SecretJWT
+          valueFrom:
+            secretKeyRef:
+              name: contact-insert-consumer-api-secrets
+              key: SecretJWT
+        - name: MassTransit__User
+          valueFrom:
+            secretKeyRef:
+              name: contact-insert-consumer-api-secrets
+              key: User
+        - name: MassTransit__Password
+          valueFrom:
+            secretKeyRef:
+              name: contact-insert-consumer-api-secrets
+              key: Password
+        - name: MassTransit__QueueName
+          valueFrom:
+            configMapKeyRef: 
+              name: contact-insert-consumer-api-configmap
+              key: QueueName
+        - name: MassTransit__Server
+          valueFrom:
+            configMapKeyRef: 
+              name: contact-insert-consumer-api-configmap
+              key: Server
+        
+       
