@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: contact-insert-consumer-api-configmap
+data:
+  QueueName: "Contacts.InsertQueue"
+  Server: "rabbitmq-clusterip"  
