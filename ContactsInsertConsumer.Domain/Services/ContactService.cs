@@ -1,20 +1,27 @@
 ﻿using FIAP.TechChallenge.ContactsInsertConsumer.Domain.Entities;
+using FIAP.TechChallenge.ContactsInsertConsumer.Domain.Interfaces.ElasticSearch;
 using FIAP.TechChallenge.ContactsInsertConsumer.Domain.Interfaces.Repositories;
 using FIAP.TechChallenge.ContactsInsertConsumer.Domain.Interfaces.Services;
 using Microsoft.Extensions.Logging;
 
 namespace FIAP.TechChallenge.ContactsInsertConsumer.Domain.Services
 {
-    public class ContactService(IContactRepository contactRepository, ILogger<ContactService> logger) : IContactService
+    public class ContactService(
+        IContactRepository contactRepository,
+        IElasticClient<Contact> elasticClient,
+        ILogger<ContactService> logger) : IContactService
     {
         private readonly IContactRepository _contactRepository = contactRepository;
         private readonly ILogger<ContactService> _logger = logger;
+        private readonly IElasticClient<Contact> _elasticClient = elasticClient;
 
         public async Task InsertAsync(Contact contact)
         {
             try
             {
                 await _contactRepository.AddAsync(contact);
+
+                await _elasticClient.Create(contact, "contacts-indexed-v2");
             }
             catch (Exception e)
             {

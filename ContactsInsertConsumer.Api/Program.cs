@@ -22,7 +22,7 @@ IConfiguration configuration = new ConfigurationBuilder().SetBasePath(Directory.
                                                          .AddEnvironmentVariables()
                                                          .Build();
 
-builder.Services.AddDependencyResolver(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddDependencyResolver(builder.Configuration);
 
 builder.Services.AddSingleton<IConfiguration>(configuration);
 
@@ -37,7 +37,7 @@ builder.Services.AddMassTransit(x =>
 {
     x.UsingRabbitMq((context, cfg) =>
     {
-        cfg.Host(server, "/", h =>
+        cfg.Host(server, 30672, "/", h =>
         {
             h.Username(user);
             h.Password(password);
