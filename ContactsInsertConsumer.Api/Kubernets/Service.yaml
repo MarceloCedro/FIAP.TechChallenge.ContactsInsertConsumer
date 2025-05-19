@@ -7,21 +7,20 @@ spec:
     app: contact-insert-consumer-api
   ports:
     - protocol: TCP
-      port: 80           # Porta acessada externamente
-      targetPort: 5050   # Porta do container
-      nodePort: 30084    # Porta exposta no n  (opcional)
+      port: 80
+      targetPort: 6060
+      nodePort: 30084
   type: NodePort
 ---
-# Service LoadBalancer: Acesso externo gerenciado (em nuvem)
 apiVersion: v1
 kind: Service
 metadata:
-  name: contact-insert-consumer-api-nodeport
+  name: contact-insert-consumer-api-loadbalancer
 spec:
   selector:
     app: contact-insert-consumer-api
   ports:
     - protocol: TCP
-      port: 5002           # Porta do servi�o
-      targetPort: 5050   # Porta do container
+      port: 5010
+      targetPort: 6060
   type: LoadBalancer

@@ -1,9 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contact-insert-consumer-api-deployment # Nome do Deployment
-  annotations:
-    autor: Rodrigo Mahlow 
+  name: contact-insert-consumer-api-deployment
 spec:
   replicas: 1
   selector:
@@ -16,18 +14,13 @@ spec:
     spec:
       containers:
       - name: contact-insert-consumer-api
-        image: rmahlow/fiaptechchallengecontactsinsertconsumerapi:latest
+        image: maxcedro/contactsinsertconsumer-new:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 5050 
-        resources:
-          limits:
-            cpu: "0.5"
-            memory: 512Mi
-          requests:
-            cpu: "0.2"
-            memory: 256Mi
+        - containerPort: 6060
         env:
+        - name: ASPNETCORE_URLS
+          value: "http://+:6060"
         - name: ConnectionStrings__DefaultConnection
           valueFrom:
             secretKeyRef:
@@ -50,13 +43,16 @@ spec:
               key: Password
         - name: MassTransit__QueueName
           valueFrom:
-            configMapKeyRef: 
+            configMapKeyRef:
               name: contact-insert-consumer-api-configmap
               key: QueueName
         - name: MassTransit__Server
           valueFrom:
-            configMapKeyRef: 
+            configMapKeyRef:
               name: contact-insert-consumer-api-configmap
               key: Server
-        
-       
+        - name: Integrations__ContactConsult__BasePath
+          valueFrom:
+            configMapKeyRef:
+              name: contact-insert-producer-api-configmap
+              key: BasePath

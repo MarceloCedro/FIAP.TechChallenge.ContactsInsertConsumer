@@ -37,7 +37,7 @@ builder.Services.AddMassTransit(x =>
 {
     x.UsingRabbitMq((context, cfg) =>
     {
-        cfg.Host(server, 30672, "/", h =>
+        cfg.Host(server, "/", h =>
         {
             h.Username(user);
             h.Password(password);
@@ -56,11 +56,10 @@ builder.Services.AddMassTransit(x =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 app.UseHealthChecks("/health");
 app.UseHttpMetrics();
